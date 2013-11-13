@@ -1,0 +1,424 @@
+<?xml version='1.0'?>
+<!DOCTYPE slides SYSTEM "/data/Doc_book/docbook-slides-3.4.0/schema/dtd/slides.dtd">
+<?dbhtml graphics-dir="/data/Doc_book/docbook-slides-3.4.0/graphics" css-stylesheet-dir="/data/Doc_book/docbook-slides-3.4.0/browser"?>
+<?dbhtml script-dir="/data/Doc_book/docbook-slides-3.4.0/browser"?>
+<slides>
+<slidesinfo>
+  <title>利用DocBook（XML）来写作！</title>
+  <subtitle>就我所知道的那么一滴</subtitle>
+  <author><firstname>李</firstname><surname>建盛</surname></author>
+  <pubdate>二零零九年七月十二日</pubdate>
+  <releaseinfo role="version">1.0</releaseinfo>
+</slidesinfo>
+
+<foil><title>章程</title>
+<para>介绍什么是DocBook?</para>
+<para>准备环境</para>
+<para>开始写作</para>
+<para>关于DocBook元素、DocBook XSL的一些实例</para>
+<para>资源列表+Questions?</para>
+</foil>
+
+<foilgroup><title>Introduction</title>
+<para>从概念、历史、特征等来述说，目的使大家有一个笼统的认识.</para>
+
+<foil><title>什么是DocBook?</title>
+<itemizedlist>
+<listitem><para>一套用SGML或XML来书写结构化文档的系统！</para></listitem>
+<listitem><para>主要目的是对计算机技术相关文档和书籍的支持，当然也包含一些其它的领域。</para></listitem>
+<listitem><para>除出版物之外也对web页面有很好的支持，甚至是演示文稿。</para></listitem>
+<listitem><para>背后有很多、很强大的free/opensource工具的支持。</para></listitem>
+<listitem><para>有很多用户和开发者的支持！</para></listitem>
+</itemizedlist>
+</foil>
+
+<foil><title>历史</title>
+<itemizedlist>
+<listitem><para>由HaL Computer Systems and O'Reilly &amp; Associates在1991年联合公布和开发 </para></listitem>
+<listitem><para>稍后的发展由许多公司共同开发：如SUN,HP,DEC等.</para></listitem>
+<listitem><para>目前由<ulink url="http://www.oasis-open.org/docbook/"><citetitle>OASIS</citetitle></ulink>在维护，版本为5.0</para></listitem>
+</itemizedlist>
+</foil>
+
+<foil><title>谁在使用／开发／支持DocBook?</title>
+<para>那些商业公司在如何使用，我们不得而知。</para>
+<para>以下是较知名的社区:</para>
+<itemizedlist>
+<listitem><para>Linux Documentation Project</para></listitem>
+<listitem><para>GNOME Documentation Project</para></listitem>
+<listitem><para>RedHat</para></listitem>
+<listitem><para>SuSE</para></listitem>
+<listitem><para>http://docs.kde.org</para></listitem>
+<listitem><para>.......</para></listitem>
+<listitem><para>.......</para></listitem>
+<listitem><para>也许有一天会加上"RedFlag"这个响亮的名字！</para></listitem>
+</itemizedlist>
+</foil>
+
+<foil>
+<title>DocBook 的优点</title>
+<itemizedlist>
+<listitem>
+<para>
+<emphasis role="strong">拥有非常棒</emphasis>
+社区用户和开发者们
+</para>
+</listitem>
+<listitem>
+<para>容易定制和扩展现有的样式定义
+</para>
+</listitem>
+<listitem>
+<para>有很多优秀的开源和自由软件工具的支持</para>
+</listitem>
+<listitem>
+<para>多种格式的输出，包括:</para>
+<itemizedlist>
+<listitem>
+<para>HTML</para>
+</listitem>
+<listitem>
+<para>HTML Help</para>
+</listitem>
+<listitem>
+<para>Java Help</para>
+</listitem>
+<listitem>
+<para>man pages</para>
+</listitem>
+<listitem>
+<para>MIF (Adobe FrameMaker)</para>
+</listitem>
+<listitem>
+<para>PDF</para>
+</listitem>
+<listitem>
+<para>PostScript</para>
+</listitem>
+<listitem>
+<para>RTF (Microsoft)</para>
+</listitem>
+<listitem>
+<para>TeX</para>
+</listitem>
+<listitem>
+<para>Text</para>
+</listitem>
+<listitem>
+<para>XHTML</para>
+</listitem>
+<listitem>
+<para>XSL Formatting Objects (FO)</para>
+</listitem>
+</itemizedlist>
+</listitem>
+</itemizedlist>
+</foil>
+
+</foilgroup>
+
+<foilgroup><title>环境准备</title>
+
+<para>工欲善其事，必先利其器！</para>
+
+<foil><title>XML编辑器</title>
+<variablelist>
+<varlistentry>
+<term>Emacs with psgml</term>
+<listitem><para>Emacs加上
+<ulink url="http://www.lysator.liu.se/~lenst/about_psgml/">psgml</ulink>模式</para></listitem>
+</varlistentry>
+<varlistentry>
+
+<term>vim with macros</term>
+<listitem><para><ulink url="http://www.vim.org/">Vim</ulink>和
+<ulink url="http://www.lodestar2.com/software/docbook/">macros</ulink>加速。。。</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term>Bluefish,gedit+publish plugin,kedit.......</term>
+<listitem><para>图形的下             的文本工具                   
+  </para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term>明显与所想即所得的距离</term>
+<listitem><para>所谓之所见即所得，XMLmind XML Editor</para></listitem>
+</varlistentry>
+
+</variablelist>
+</foil>
+
+<foil><title>DocBook DTD</title>
+<para>到DTD的<ulink url="http://www.oasis-open.org/docbook/xml/5.0b5/docbook-5.0b5.tar.gz"><citetitle>维护网站</citetitle></ulink>下载相应的版本,</para>
+<para>当然这是每个发行版中必备的，我们的服务器产品和桌面产品默认都带了dtd文件。</para>
+<para> LSB标准的路径是/usr/share/sgml/docbook/</para>
+</foil>
+
+<foil><title>DocBook XML XSL</title>
+<para>由Norman Walsh所维护</para>
+<para>有两种形式</para>
+<itemizedlist>
+     <listitem><para>XSL</para></listitem>
+     <listitem><para>DSSSL</para></listitem>
+</itemizedlist>
+<para>到<ulink URL="http://docbook.sourceforge.net"><citetitle>docbook@sourceforge.net</citetitle></ulink>上下载.</para>
+<para>请参考我下载的文件</para>
+</foil>
+
+<foil><title>XSL Stylesheets</title>
+<itemizedlist>
+<listitem>
+<para>XSLT 可以将 DocBook XML 转换为下列格式:
+</para>
+    <itemizedlist>
+    <listitem><para>HTML</para></listitem>
+    <listitem><para>HTML Help (for Windows Help)</para></listitem>
+    <listitem><para>Java Help</para></listitem>
+    <listitem><para>XHTML</para></listitem>
+    <listitem><para>XSL Formatting Objects (FO)</para></listitem>
+    </itemizedlist>
+</listitem>
+<listitem>
+<para>额外的工具可以将FO文件转换为PDF, PostScript等
+</para>
+</listitem>
+</itemizedlist>
+</foil>
+
+<foil><title>DSSSL </title>
+<para>Document Style Semantics and Specification Language的缩写</para>
+
+<itemizedlist>
+<listitem>
+<para>DSSSL 可以将DocBook SGML 转换为下列格式的文档:
+</para>
+    <itemizedlist>
+    <listitem><para>HTML</para></listitem>
+    <listitem><para>MIF</para></listitem>
+    <listitem><para>RTF</para></listitem>
+    <listitem><para>TeX</para></listitem>
+    </itemizedlist>
+</listitem>
+</itemizedlist>
+</foil>
+
+<foil><title>XSLT processor - libxslt/xsltproc</title>
+<itemizedlist>
+<listitem>
+<para><ulink url="http://xmlsoft.org/XSLT/">http://xmlsoft.org/XSLT/</ulink>
+</para>
+</listitem>
+<listitem>
+<para>C 实现. </para></listitem>
+<listitem> <para>由来自RedHat的Daniel Veillard开发, 隶属于GNOME Project</para> </listitem>
+<listitem> <para>由下列命令实现: </para>
+    <itemizedlist>
+    <listitem> <para><command>xsltproc</command> - XSLT processor </para>
+    </listitem>
+    <listitem><para><command>xmllint</command> - XML 有效性和格式检验程序
+    </para></listitem>
+    </itemizedlist>
+</listitem>
+<listitem> <para><emphasis>非常</emphasis> 快 </para> </listitem>
+<listitem> <para>依赖<filename>libxml2</filename> 和
+<filename>libxslt</filename> </para> </listitem>
+</itemizedlist>
+<para>用法:</para>
+<screen>xsltproc -o <emphasis>outputfile</emphasis> <emphasis>stylesheet</emphasis> <emphasis>inputfile</emphasis>
+</screen>
+</foil>
+
+<foil><title>XSLT processor - Saxon</title>
+<itemizedlist>
+<listitem>
+<para><ulink url="http://saxon.sourceforge.net/">http://saxon.sourceforge.net/</ulink>
+</para>
+</listitem>
+<listitem> <para>Java 实现</para> </listitem>
+<listitem> <para>由Michael Kay开发 </para> </listitem>
+<listitem> <para>支持许多XSLT实验性的特性.</para> </listitem>
+</itemizedlist>
+<screen>java com.icl.saxon.StyleSheet inputfile stylesheet</screen>
+</foil>
+
+<foil><title>XSLT processor - Xalan</title>
+<itemizedlist>
+<listitem>
+<para><ulink url="http://xml.apache.org/">http://xml.apache.org/</ulink> </para>
+</listitem>
+<listitem> <para>Java实现，也有C++的版本。 </para> </listitem>
+<listitem> <para>Apache基金会所开发。 </para> </listitem>
+<listitem> <para>广泛应用于开源社区.</para> </listitem>
+</itemizedlist>
+<screen>java org.apache.xml.xalan.xslt.Process -IN inputfile -XSL stylesheet -OUT outfile</screen>
+</foil>
+
+
+<foil><title>XSL-FO processor</title>
+<para>apache FOP</para>
+<itemizedlist>
+<listitem>
+<para><ulink url="http://xmlgraphics.apache.org/fop/">http://xmlgraphics.apache.org/fop/</ulink> </para>
+</listitem>
+<listitem> <para>Java实现. </para> </listitem>
+<listitem> <para>Apache基金会所开发。 </para> </listitem>
+<listitem> <para>0.95版本后对中文支持很好.</para> </listitem>
+</itemizedlist>
+<screen>fop -fo filename.fo -pdf filename.pdf</screen>
+</foil>
+
+<foil><title>xsl运行图</title>
+<mediaobject>
+<imageobject>
+<imagedata fileref="./images/two-process.gif" />
+</imageobject>
+<textobject><phrase>xslt </phrase></textobject>
+</mediaobject>
+</foil>
+
+<foil><title>原理简介</title>
+
+<itemizedlist>
+<listitem><para>众所周知，XML能够很好表达结构化的数据。但是其无法表达它的表达形式。
+</para></listitem>
+<listitem><para>那么将外观表现交给扩展样式表语言XSL来处理，得到格式化的对象
+</para></listitem>
+<listitem><para>这个Formatting Object仍然是<emphasis>XML</emphasis>文件，但是多了许多和表现有关的属性。
+</para></listitem>
+<listitem><para>然后FO再按照某种格式的文档输出，如PDF、PS可打印，web页面、RTF,htmlhelp,javahelp,manpage等等
+</para></listitem>
+</itemizedlist>
+</foil>
+</foilgroup>
+
+<foilgroup><title>让我们开始愉快的写作之旅吧！</title>
+
+<para>我们简要的分别写一个书和文章的例子，来体验DocBook。</para>
+
+<foil><title>书</title>
+
+<para>简单的书的样例：examplebook.xml</para>
+
+<screen><![CDATA[<?xml version="1.0"?>
+<book>
+  <bookinfo>
+    <title>23小时学会红旗linux操作系统</title>
+  </bookinfo>
+  <chapter> 
+    <title>第一章</title>
+    <sect1>
+      <title>第一节</title>
+      <para>这是内容.</para>
+    </sect1>
+    <sect1>...</sect1>
+  </chapter>
+  <chapter>...</chapter>
+  <chapter>...</chapter>
+  <chapter>...</chapter>
+  <appendix>...</appendix>
+  <appendix>...</appendix>
+</book>
+]]></screen>
+
+<para>基本的书的元素就已成形，请看pdf或html输出。</para>
+</foil>
+
+<foil><title>文章</title>
+<screen>
+<![CDATA[
+[<?xml version="1.0"?>
+<article>
+  <articleinfo>
+    <title>文章样例</title>
+  </articleinfo>
+  <para>摘要性的介绍文字。</para>
+  <sect1>
+    <title>第一章</title>
+    <para>这里添加内容</para>
+     <sect2>
+       <title>第一章的章节分支1</title>
+       <para>你好！你是垃圾！ </para>
+     </sect2>
+     <sect2>...</sect2>
+     <sect2>...</sect2>
+  </sect1>
+  <sect1>...</sect1>
+  <sect1>...</sect1>
+  <sect1>...</sect1>
+</article>
+]]>
+</screen>
+
+</foil>
+
+<foil><title>如何编译</title>
+
+<para>最简单的形式莫过于直接像上述那样直接执行命令即可</para>
+<para>请看实例xml-format.sh</para>
+<para>但是如果是多人合作了呢？
+<quote>Makefile</quote> 是最好的办法，</para>
+
+</foil>
+</foilgroup>
+
+<foilgroup><title>DocBook元素和其XSL语言的实例</title>
+
+<para>以解决孙国栋的问题为主</para>
+
+<foil><title>DobBook元素</title>
+
+<para>主要以我已经写就的文档为参考</para>
+<itemizedlist>
+<listitem><para>目录、索引、引用等
+</para></listitem>
+<listitem><para>等宽字体的支持
+</para></listitem>
+<listitem><para>图片和表格
+</para></listitem>
+<listitem><para>插入代码等
+</para></listitem>
+<listitem><para>
+</para></listitem>
+</itemizedlist>
+</foil>
+</foilgroup>
+
+<foilgroup><title>除XML以外的利用DocBook写作的形式</title>
+<foil><title>SGML + OpenJade</title>
+
+<para>请参考中文资料</para>
+<ulink url="http://www.worldhello.net/doc/docbook_howto/"><citetitle>DocBook 助你完成传世之作</citetitle></ulink>
+</foil>
+</foilgroup>
+
+<foil><title>参考资料</title>
+
+<para>
+我从以下站点获得许多帮助
+</para>
+<para>
+<itemizedlist>
+<listitem><para>http://www.ibm.com/developerworks/linux/library/x-reuseinfo1/index.html</para></listitem>
+<listitem><para>http://blog.sina.com.cn/s/blog_3ef2a82a0100davi.html###</para></listitem>
+<listitem><para>http://easwy.com/blog/archives/render_docbook_xml_to_pdf_by_apache_fop/</para></listitem>
+</itemizedlist>
+</para>
+<para>
+推荐读物和链接：
+<itemizedlist>
+<listitem><para><ulink url="http://www.docbook.org/"><citetitle>DocBook社区</citetitle></ulink></para></listitem>
+<listitem><para><ulink url="http://www.lodestar2.com/people/dyork/talks/2002/ols/docbook-tutorial/frames/frames.html"><citetitle>一篇讲解非常详细的演示文稿</citetitle></ulink></para></listitem>
+<listitem><para><ulink url="http://sagehill.net/docbookxsl/"><citetitle>DocBook XSL: The Complete Guide - 4th Edition</citetitle></ulink></para></listitem>
+<listitem><para><ulink url="http://fedorahost.org/publican"><citetitle>Publican官方站点</citetitle></ulink></para></listitem>
+</itemizedlist>
+</para>
+</foil>
+
+<foil><title>Q&amp;A</title>
+
+<para>Any questions?</para>
+
+</foil>
+
+</slides>
